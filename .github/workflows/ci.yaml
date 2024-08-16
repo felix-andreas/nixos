@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Nix Flake Check
+        run: |
+          nix flake check -L

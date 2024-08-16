@@ -1,0 +1,23 @@
+name: Update flake inputs
+on:
+  workflow_dispatch: # allows manual triggering
+  schedule:
+    - cron: "0 0 1,15 * *" # runs bi-weekly on the 1st and 15th of every month
+
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v9
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@v21
+        with:
+          token: ${{ secrets.PAT_FOR_WORKFLOWS }}
+          pr-title: "chore: Update flake.lock"
+          pr-body: "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action."
+          pr-labels: |
+            dependencies
+            automated

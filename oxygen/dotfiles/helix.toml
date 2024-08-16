@@ -1,0 +1,4 @@
+theme = "onelight"
+
+[editor]
+scroll-lines = 1

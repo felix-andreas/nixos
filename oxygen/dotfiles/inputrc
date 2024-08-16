@@ -1,0 +1,45 @@
+# better completion
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+# color files by types
+set colored-stats On
+
+# append char to indicate type
+set visible-stats On
+
+# mark symlinked directories
+set mark-symlinked-directories On
+
+# color the common prefix
+set colored-completion-prefix On
+
+# color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
+# set vi mode
+set editing-mode vi
+set show-mode-in-prompt on
+set keyseq-timeout 0
+set vi-ins-mode-string ">"
+set vi-cmd-mode-string "!"
+
+$if mode=vi
+set keymap vi-command
+Control-l: clear-screen
+Control-a: beginning-of-line
+# end-of-line is the only one that does not work.
+Control-e: end-of-line
+Control-k: kill-line
+Control-u: backward-kill-line
+"\et": transpose-words
+
+set keymap vi-insert
+Control-l: clear-screen
+Control-a: beginning-of-line
+Control-e: end-of-line
+Control-k: kill-line
+Control-u: backward-kill-line
+"\et": transpose-words
+"\e.": yank-last-arg
+$endif

@@ -1,0 +1,253 @@
+{
+  /* Behavior */
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "git.confirmSync": false,
+  "keyboard.dispatch": "keyCode",
+  "redhat.telemetry.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "update.mode": "manual", // disable update notifications
+  "window.menuBarVisibility": "hidden",
+  "workbench.colorTheme": "Default Light Modern",
+  /* Editor */
+  // region: editor
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorBlinking": "solid",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.renderControlCharacters": true,
+  "editor.renderLineHighlight": "gutter",
+  "editor.renderWhitespace": "trailing",
+  "editor.scrollBeyondLastColumn": 0,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.rulers": [
+    80,
+    88,
+    100,
+    120
+  ],
+  "editor.wordWrap": "on",
+  // endregion
+  "diffEditor.ignoreTrimWhitespace": false,
+  "files.associations": {
+    "*.env": "shellscript"
+  },
+  // "files.insertFinalNewline": true, /* conflicts with default HTML formatter */
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 88,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[toml]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 88
+  },
+  "[yaml]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120
+  },
+  /* Copilot */
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "github.copilot.editor.enableAutoCompletions": false,
+  /* SSH */
+  "remote.SSH.useLocalServer": false,
+  /* HTML */
+  "emmet.triggerExpansionOnTab": true,
+  /* Python */
+  "python.languageServer": "None", /* Use Pyright extension! */
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  /* Rust */
+  // from https://github.com/rust-lang/rust-analyzer/issues/6007#issuecomment-1523204067
+  // "rust-analyzer.cargo.extraEnv": {
+  //   "CARGO_PROFILE_RUST_ANALYZER_INHERITS": "dev"
+  // },
+  // "rust-analyzer.cargo.extraArgs": [
+  //   "--profile",
+  //   "rust-analyzer"
+  // ],
+  // "rust-analyzer.server.extraEnv": {
+  //   "CARGO_TARGET_DIR": "target/analyzer"
+  // },
+  // "rust-analyzer.check.extraArgs": [
+  //   "--target-dir=target/analyzer"
+  // ],
+  "rust-analyzer.cargo.features": "all",
+  "rust-analyzer.procMacro.ignored": {
+    "leptos_macro": [
+      "server",
+      "component"
+    ],
+  },
+  /* Nix */
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nil": {
+      "formatting": {
+        "command": [
+          "nixpkgs-fmt"
+        ]
+      }
+    }
+  },
+  "i18n-ally.displayLanguage": "de",
+  /* Zig */
+  // "zigLanguageClient.path": "/home/felix/.nix-profile/bin/zls",
+  "zig.path": "",
+  "zig.zls.path": "",
+  "zig.initialSetupDone": true,
+  /* PLUGINS */
+  /* REST Client */
+  "rest-client.previewOption": "exchange",
+  /* Gitlens */
+  "gitlens.currentLine.enabled": false,
+  /* Grammarly */
+  "grammarly.autoActivate": false,
+  /* Meson */
+  "mesonbuild.configureOnOpen": false,
+  "mesonbuild.buildFolder": "build",
+  /* Neovim */ // does not support remote :(
+  "vscode-neovim.neovimExecutablePaths.linux": "nvim",
+  "vscode-neovim.useCtrlKeysForNormalMode": false,
+  "vscode-neovim.useCtrlKeysForInsertMode": false,
+  /* VSCodeVim */
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/home/felix/.nix-profile/bin/nvim",
+  "vim.foldfix": true,
+  "vim.useCtrlKeys": false,
+  "vim.handleKeys": {
+    "<C-c>": false,
+    "<C-d>": false,
+    "<C-i>": true,
+    "<C-o>": true,
+    "<C-g>": true, // inline chat
+  },
+  "vim.hlsearch": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.easymotion": true,
+  "vim.easymotionMarkerForegroundColorOneChar": "#000",
+  "vim.easymotionMarkerForegroundColorTwoCharFirst": "#000",
+  "vim.easymotionMarkerForegroundColorTwoCharSecond": "#000",
+  "vim.easymotionMarkerBackgroundColor": "#FFDF5D",
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-g>"
+      ],
+      "commands": [
+        "inlineChat.start"
+      ]
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        " "
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "v"
+      ],
+      "after": [
+        "ctrl+v"
+      ]
+    },
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        " "
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "<C-g>"
+      ],
+      "commands": [
+        "inlineChat.start"
+      ]
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        "<C-g>"
+      ],
+      "commands": [
+        "inlineChat.start"
+      ]
+    },
+  ],
+  /* Other */
+  "httpyac.responseViewContent": "full",
+  "nls.server.path": "/nix/store/rwdpvmn7mjz55k35za96yp525akfsnvf-devshell-dir/bin/nls",
+  "dart.checkForSdkUpdates": false,
+  "dart.flutterHotReloadOnSave": "all",
+  "dart.debugExternalPackageLibraries": true,
+  "dart.debugSdkLibraries": false,
+  "svelte.enable-ts-plugin": true,
+  /* Auto added */
+  "gitlens.mode.active": "review",
+  "git.openRepositoryInParentFolders": "never",
+  "githubPullRequests.pullBranch": "never",
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Chromium, IndentWidth: 4}",
+  "window.zoomLevel": 1,
+  "mojo.modularHomePath": "/home/felix/.modular",
+  "jupyter.askForKernelRestart": false,
+}

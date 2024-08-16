@@ -1,0 +1,27 @@
+[
+  // is there no setting to disable all ctrl keys??
+  {
+    "context": "Editor && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-shift-t": "pane::ReopenClosedItem",
+      "ctrl-c": "editor::Copy", // vim default: return to normal mode
+      "ctrl-d": "editor::SelectNext", // vim default: return to normal mode
+      "ctrl-x": "editor::Cut", // vim default: increment
+      "ctrl-v": "editor::Paste", // vim default: visual block mode
+      // "ctrl-y": "editor::Undo",       // vim default: line up
+      "ctrl-f": "buffer_search::Deploy", // vim default: page down
+      "ctrl-a": "editor::SelectAll" // vim default: increment
+      // "ctrl-o": "workspace::Open",    // vim default: go back
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      "> >": null,
+      "< <": null,
+      ">": "vim::Indent",
+      "<": "vim::Outdent"
+    }
+  }
+]
