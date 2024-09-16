@@ -18,8 +18,8 @@
     };
     tmp.useTmpfs = true;
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = kernel-fix.linuxPackages;
-    # kernelPackages = pkgs.unstable.linuxPackages_6_4;
+    # kernelPackages = kernel-fix.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_5_15;
     # Show proper password prompt
     plymouth.enable = true;
     initrd.systemd.enable = true; # (seems to be experimental)

@@ -246,55 +246,28 @@ in
   };
 
   home.packages = with pkgs; [
-    # andreasfelix
-    # chatgpt
-    # meetap
-    # ripcat
     # fonts
     inter
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # desktop
+    unstable.alacritty
+    unstable.anytype
     beekeeper-studio
     bitwarden
     easyeffects
     firefox
-    # gamemode
-    librewolf
     gimp
     (google-chrome.override {
       # see https://bugs.chromium.org/p/chromium/issues/detail?id=1356014#c54
       commandLineArgs = "--disable-features=WaylandFractionalScaleV1";
     })
-    spotify
-    neovide
-    qemu
-    unstable.alacritty
-    unstable.lapce
     unstable.helix
-    # unstable.zed-editor
-    # because language extensions don't work :/
-    (unstable.buildFHSEnv {
-      name = "zed";
-      targetPkgs = pkgs:
-        with pkgs; [
-          zed-editor
-        ];
-      runScript = "zed";
-    })
-    # (vscode-fhsWithPackages (p: with p; [ bashInteractive ]))
-    # vscodeWithExtensions
-    # vscode
-    ## for vscode insiders
-    # ((pkgs.unstable.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: {
-    #   src = (builtins.fetchTarball {
-    #     url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-    #     sha256 = "1cgrn4n6y348x0c7ndmn5vssvpj1sdk27bp91cayr27fb59lgmv9";
-    #   });
-    #   version = "latest";
-    # }))
+    spotify
+    qemu
     vlc
     wl-clipboard # access clipboard from console on Wayland
     xclip # access clipboard from console on X
+    unstable.zed-editor
     # cli tools
     brotli
     cloudflared
@@ -326,32 +299,31 @@ in
     unstable.nil
     unstable.nixd
     unstable.devenv
-    # rnix-lsp
     # c
     gcc
     gdb
     # rust
     # rustup
     # python
-    (python311.withPackages (ps: with ps; [
-      pip
-      ipython
-      ipykernel
-      # jupyter
-      numpy
-      matplotlib
-      scipy
-      pandas
+    (python312.withPackages (ps: with ps; [
       httpx
-      pytest
-      pylint
-      mypy
-      # black # in favor of ruff
-      rope
+      ipykernel
+      ipython
+      matplotlib
+      numpy
+      pandas
+      scipy
+      # tooling
+      # black # use ruff instead
       isort
+      mypy
+      pip
+      pylint
+      pytest
+      rope
     ]))
     unstable.uv
-    ruff
+    unstable.ruff
     # elm
     elmPackages.elm
     elmPackages.elm-test
