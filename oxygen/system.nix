@@ -4,7 +4,10 @@
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       auto-optimise-store = true;
     };
   };
@@ -18,8 +21,9 @@
     };
     tmp.useTmpfs = true;
     supportedFilesystems = [ "ntfs" ];
-    # kernelPackages = kernel-fix.linuxPackages;
-    kernelPackages = pkgs.linuxPackages_5_15;
+    kernelPackages = kernel-fix.linuxPackages;
+    # kernelPackages = pkgs.linuxPackages_5_15;
+    # kernelPackages = pkgs.linuxPackages_6_6;
     # Show proper password prompt
     plymouth.enable = true;
     initrd.systemd.enable = true; # (seems to be experimental)
@@ -42,12 +46,18 @@
     mutableUsers = false;
     users.felix = {
       isNormalUser = true;
-      extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
+      extraGroups = [
+        "adbusers"
+        "docker"
+        "networkmanager"
+        "wheel"
+      ];
       password = "asdf";
       # shell = pkgs.unstable.nushell;
     };
   };
 
+  # services.intune.enable = true;
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
@@ -73,12 +83,11 @@
   };
 
   services = {
-    printing.enable = true;
     avahi.enable = true;
     avahi.nssmdns4 = true;
+    printing.enable = true;
+    flatpak.enable = true;
   };
-
-  services.flatpak.enable = true;
   services.fwupd.enable = true;
 
   # # from https://nixos.wiki/wiki/OSX-KVM
@@ -97,12 +106,15 @@
       # see https://unix.stackexchange.com/questions/539257/wlan-wifionice-deutsche-bahn-not-working-with-docker-installed
       daemon.settings = {
         default-address-pools = [
-          { base = "172.19.0.0/16"; size = 24; }
+          {
+            base = "172.19.0.0/16";
+            size = 24;
+          }
         ];
       };
     };
     podman.enable = true;
-    waydroid. enable = true;
+    # waydroid.enable = true;
     lxd.enable = true;
   };
 

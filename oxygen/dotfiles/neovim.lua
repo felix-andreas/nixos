@@ -17,14 +17,10 @@ if vim.g.vscode == nil then
     require("nvim-tree").setup()
     map("n", "<C-b>", "<cmd> NvimTreeToggle <CR>")
 
---    vim.cmd([[
---        colorscheme github_light
---        set guifont=JetBrains\ Mono\ Nerd\ Font
---    ]])
+    vim.cmd('colorscheme github_light_high_contrast')
 
     -- Plugins
 
-    -- opt.termguicolors = true
     require("bufferline").setup({})
 
     map("n", "<C-p>", "<cmd> lua require('telescope.builtin').git_files() <CR>")
@@ -47,7 +43,7 @@ if vim.g.vscode == nil then
 
     local nvim_lsp = require("lspconfig")
     nvim_lsp.pyright.setup({})
-    nvim_lsp.rnix.setup({})
+    nvim_lsp.nixd.setup({})
     nvim_lsp.rust_analyzer.setup({
         -- on_attach = function(client) 
         --     require("completion").on_attach(client) 

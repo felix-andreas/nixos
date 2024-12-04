@@ -31,7 +31,6 @@ in
     "nushell/extra-config.nu".source = makeLink "config.nu";
     "zed/settings.json".source = makeLink "zed-settings.json";
     "zed/keymap.json".source = makeLink "zed-keymap.json";
-    # "hypr/hyprland.conf".source = makeLink "hyprland.conf";
   };
 
   fonts.fontconfig = {
@@ -67,10 +66,6 @@ in
         source ${config.xdg.configHome}/nushell/extra-config.nu
       '';
     };
-    # atuin = {
-    #   enable = true;
-    #   enableBashIntegration = true;
-    # };
     bash = {
       enable = true;
       bashrcExtra = ''
@@ -91,7 +86,6 @@ in
     };
     direnv = {
       enable = true;
-      # enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
     eza = {
@@ -134,57 +128,58 @@ in
         size = "!git ls-tree -r --long HEAD | awk '{sum+=$4} END {print sum}' | numfmt --to=iec";
         new = "!git switch main && git pull && git switch -c";
       };
-      attributes = [
-        "*.lockb binary diff=lockb"
-      ];
+      attributes = [ "*.lockb binary diff=lockb" ];
       delta = {
         enable = true;
         options.syntax-theme = "GitHub";
       };
     };
     home-manager.enable = true;
-    neovim =
-      let
-        github-nvim-theme = pkgs.vimUtils.buildVimPlugin {
+    neovim = {
+      enable = true;
+      extraConfig = ''
+        luafile ${config.xdg.configHome}/nvim/lua/settings.lua
+      '';
+      extraPackages = with pkgs; [
+        (python3.withPackages (
+          ps: with ps; [
+            black
+            isort
+            pylint
+          ]
+        ))
+        pyright
+      ];
+      plugins = with pkgs.vimPlugins; [
+        # github theme
+        (pkgs.vimUtils.buildVimPlugin {
           name = "github-nvim-theme";
           src = pkgs.fetchFromGitHub {
             owner = "projekt0n";
             repo = "github-nvim-theme";
-            rev = "v0.0.7";
-            sha256 = "sha256-wLX81wgl4E50mRig9erbLyrxyGbZllFbHFAQ9+v60W4=";
+            rev = "v1.1.2";
+            sha256 = "sha256-ur/65NtB8fY0acTUN/Xw9fT813UiL3YcP4+IwkaUzTE=";
           };
           nativeBuildInputs = with pkgs; [ luajitPackages.luacheck ];
-        };
-      in
-      {
-        enable = true;
-        extraConfig = ''
-          luafile ${config.xdg.configHome}/nvim/lua/settings.lua
-        '';
-        extraPackages = with pkgs; [
-          (python3.withPackages (ps: with ps; [ black isort pylint ]))
-          nodePackages.pyright
-        ];
-        plugins = with pkgs.vimPlugins; [
-          # github-nvim-theme
-          # ide features
-          bufferline-nvim
-          nvim-cmp
-          nvim-tree-lua
-          nvim-web-devicons
-          telescope-nvim
-          # editing
-          comment-nvim
-          # language support
-          nvim-lspconfig
-          nvim-treesitter.withAllGrammars
-          nvim-treesitter-textobjects
-        ];
-        viAlias = true;
-        vimAlias = true;
-        withNodeJs = true;
-        withPython3 = true;
-      };
+        })
+        # ide features
+        bufferline-nvim
+        nvim-cmp
+        nvim-tree-lua
+        nvim-web-devicons
+        telescope-nvim
+        # editing
+        comment-nvim
+        # language support
+        nvim-lspconfig
+        nvim-treesitter.withAllGrammars
+        nvim-treesitter-textobjects
+      ];
+      viAlias = true;
+      vimAlias = true;
+      withNodeJs = true;
+      withPython3 = true;
+    };
     nix-index.enable = true;
     starship = {
       enable = true;
@@ -210,15 +205,15 @@ in
         updates.auto_update = true;
       };
     };
-    vscode = with pkgs; {
+    vscode = {
       enable = true;
-      package = unstable.vscode;
-      extensions = with vscode-extensions; [
+      package = pkgs.unstable.vscode;
+      extensions = with pkgs.unstable.vscode-extensions; [
         github.github-vscode-theme
         ms-vsliveshare.vsliveshare
-        # matklad.rust-analyzer
         vadimcn.vscode-lldb
-        ms-vscode.cpptools
+        # matklad.rust-analyzer
+        # ms-vscode.cpptools
       ];
     };
     zellij = {
@@ -267,7 +262,7 @@ in
     vlc
     wl-clipboard # access clipboard from console on Wayland
     xclip # access clipboard from console on X
-    unstable.zed-editor
+    unstable.zed-editor.fhs
     # cli tools
     brotli
     cloudflared
@@ -294,6 +289,7 @@ in
     # nix
     nix-index
     nixpkgs-fmt
+    nixfmt-rfc-style
     patchelf
     unstable.nickel
     unstable.nil
@@ -305,25 +301,28 @@ in
     # rust
     # rustup
     # python
-    (python312.withPackages (ps: with ps; [
-      httpx
-      ipykernel
-      ipython
-      matplotlib
-      numpy
-      pandas
-      scipy
-      # tooling
-      # black # use ruff instead
-      isort
-      mypy
-      pip
-      pylint
-      pytest
-      rope
-    ]))
-    unstable.uv
+    (python312.withPackages (
+      ps: with ps; [
+        httpx
+        ipykernel
+        ipython
+        matplotlib
+        numpy
+        pandas
+        scipy
+        # tooling
+        # black # use ruff instead
+        isort
+        mypy
+        pip
+        pylint
+        pytest
+        rope
+      ]
+    ))
+    unstable.pyright
     unstable.ruff
+    unstable.uv
     # elm
     elmPackages.elm
     elmPackages.elm-test
@@ -336,6 +335,7 @@ in
     # js
     nodejs
     nodePackages.pnpm
+    bun
     deno
     nodePackages.yaml-language-server
     # wasm
@@ -361,7 +361,7 @@ in
     delta
     dogdns
     duf
-    du-dust
+    dust
     eza
     fd
     fzf
