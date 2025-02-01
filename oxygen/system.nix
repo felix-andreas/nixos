@@ -85,19 +85,10 @@
   services = {
     avahi.enable = true;
     avahi.nssmdns4 = true;
-    printing.enable = true;
     flatpak.enable = true;
+    fwupd.enable = true;
+    printing.enable = true;
   };
-  services.fwupd.enable = true;
-
-  # # from https://nixos.wiki/wiki/OSX-KVM
-  # virtualisation.libvirtd.enable = true;
-
-  # boot.extraModprobeConfig = ''
-  #   options kvm_intel nested=1
-  #   options kvm_intel emulate_invalid_guest_state=0
-  #   options kvm ignore_msrs=1
-  # '';
 
   virtualisation = {
     docker = {
@@ -114,14 +105,25 @@
       };
     };
     podman.enable = true;
-    # waydroid.enable = true;
     lxd.enable = true;
   };
 
-  programs.adb.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  programs = {
+    # adb.enable = true;
+    # hyprland = {
+    #   enable = true;
+    #   xwayland.enable = true;
+    # };
+    nix-ld = {
+      enable = true;
+      libraries =
+        with pkgs;
+        [
+          stdenv.cc.cc
+          zlib
+        ]
+        ++ (pkgs.steam-run.args.multiPkgs pkgs);
+    };
   };
 
   environment = {
@@ -130,7 +132,7 @@
       git
       htop
       neovim
-      gnome.dconf-editor
+      dconf-editor
       iptables
     ];
     variables.EDITOR = "nvim";

@@ -105,7 +105,7 @@ in
           contents.user.email = "felix.andreas@leptonic.solutions";
         }
       ];
-      ignores = [ ".vscode" ];
+      # ignores = [ ".vscode" ];
       extraConfig = {
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
@@ -209,9 +209,9 @@ in
       enable = true;
       package = pkgs.unstable.vscode;
       extensions = with pkgs.unstable.vscode-extensions; [
-        github.github-vscode-theme
-        ms-vsliveshare.vsliveshare
-        vadimcn.vscode-lldb
+        # github.github-vscode-theme
+        # ms-vsliveshare.vsliveshare
+        # vadimcn.vscode-lldb
         # matklad.rust-analyzer
         # ms-vscode.cpptools
       ];
@@ -251,6 +251,7 @@ in
     bitwarden
     easyeffects
     firefox
+    ghostty
     gimp
     (google-chrome.override {
       # see https://bugs.chromium.org/p/chromium/issues/detail?id=1356014#c54
@@ -338,6 +339,15 @@ in
     bun
     deno
     nodePackages.yaml-language-server
+    # R
+    (rWrapper.override {
+      packages = with pkgs.rPackages; [
+        devtools
+        data_table
+        dplyr
+        purrr
+      ];
+    })
     # wasm
     wabt
     wasmer

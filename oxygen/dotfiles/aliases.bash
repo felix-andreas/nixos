@@ -48,7 +48,6 @@ alias ubuntu='distrobox enter ubuntu'
 alias path='echo $PATH | tr : \\n'
 alias record-gif='ffmpeg -video_size 1920x1080 -f x11grab -i :0.0+0,420 -y video.gif -vf "fps=10,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0'
 alias start-qemu='qemu-system-x86_64 -enable-kvm -cpu host -smp 4 -m 6G -vga virtio -display sdl,gl=on -hda'
-alias r='R -s'
 alias zed='zeditor'
 
 # power management

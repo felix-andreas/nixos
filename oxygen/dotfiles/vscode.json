@@ -250,4 +250,5 @@
   "window.zoomLevel": 1,
   "mojo.modularHomePath": "/home/felix/.modular",
   "jupyter.askForKernelRestart": false,
+  "r.lsp.enabled": false,
 }
