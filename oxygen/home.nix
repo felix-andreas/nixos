@@ -26,11 +26,12 @@ in
   xdg.configFile = {
     "alacritty/alacritty.yml".source = makeLink "alacritty.yaml";
     "Code/User/settings.json".source = makeLink "vscode.json";
+    "ghostty/config".source = makeLink "ghostty";
     "helix/config.toml".source = makeLink "helix.toml";
-    "nvim/lua/settings.lua".source = makeLink "neovim.lua";
     "nushell/extra-config.nu".source = makeLink "config.nu";
-    "zed/settings.json".source = makeLink "zed-settings.json";
+    "nvim/lua/settings.lua".source = makeLink "neovim.lua";
     "zed/keymap.json".source = makeLink "zed-keymap.json";
+    "zed/settings.json".source = makeLink "zed-settings.json";
   };
 
   fonts.fontconfig = {

@@ -1,4 +1,5 @@
 {
+  "ruff.logLevel": "debug",
   /* Behavior */
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
@@ -13,6 +14,8 @@
   // region: editor
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.find.seedSearchStringFromSelection": "selection",
   "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
@@ -22,15 +25,15 @@
   "editor.renderControlCharacters": true,
   "editor.renderLineHighlight": "gutter",
   "editor.renderWhitespace": "trailing",
-  "editor.scrollBeyondLastColumn": 0,
-  "editor.semanticHighlighting.enabled": true,
-  "editor.stickyScroll.enabled": true,
   "editor.rulers": [
     80,
     88,
     100,
     120
   ],
+  "editor.scrollBeyondLastColumn": 0,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.stickyScroll.enabled": true,
   "editor.wordWrap": "on",
   // endregion
   "diffEditor.ignoreTrimWhitespace": false,
@@ -66,7 +69,7 @@
   /* Python */
   "python.languageServer": "None", /* Use Pyright extension! */
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   /* Rust */
   // from https://github.com/rust-lang/rust-analyzer/issues/6007#issuecomment-1523204067
@@ -84,6 +87,7 @@
   //   "--target-dir=target/analyzer"
   // ],
   "rust-analyzer.cargo.features": "all",
+  "rust-analyzer.check.command": "clippy",
   "rust-analyzer.procMacro.ignored": {
     "leptos_macro": [
       "server",
@@ -247,8 +251,11 @@
   "git.openRepositoryInParentFolders": "never",
   "githubPullRequests.pullBranch": "never",
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Chromium, IndentWidth: 4}",
-  "window.zoomLevel": 1,
   "mojo.modularHomePath": "/home/felix/.modular",
   "jupyter.askForKernelRestart": false,
   "r.lsp.enabled": false,
+  "window.zoomLevel": -2,
+  "r.lsp.promptToInstall": false,
+  // "roughly.path": "/home/felix/Projects/roughly/target/release/roughly",
+  "roughly.path": "/home/felix/Projects/roughly/target/debug/roughly",
 }
