@@ -87,6 +87,7 @@ in
     };
     direnv = {
       enable = true;
+      enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
     eza = {
@@ -184,8 +185,8 @@ in
     nix-index.enable = true;
     starship = {
       enable = true;
-      package = pkgs.unstable.starship;
       enableNushellIntegration = true;
+      package = pkgs.unstable.starship;
       settings = {
         add_newline = false;
         username.show_always = true;
@@ -209,13 +210,13 @@ in
     vscode = {
       enable = true;
       package = pkgs.unstable.vscode;
-      extensions = with pkgs.unstable.vscode-extensions; [
-        # github.github-vscode-theme
-        # ms-vsliveshare.vsliveshare
-        # vadimcn.vscode-lldb
-        # matklad.rust-analyzer
-        # ms-vscode.cpptools
-      ];
+      # extensions = with pkgs.unstable.vscode-extensions; [
+      #   github.github-vscode-theme
+      #   ms-vsliveshare.vsliveshare
+      #   vadimcn.vscode-lldb
+      #   matklad.rust-analyzer
+      #   ms-vscode.cpptools
+      # ];
     };
     zellij = {
       enable = true;
@@ -266,6 +267,7 @@ in
     xclip # access clipboard from console on X
     unstable.zed-editor.fhs
     # cli tools
+    ast-grep
     brotli
     cloudflared
     ffmpeg
@@ -376,8 +378,8 @@ in
     eza
     fd
     fzf
-    hyperfine
     hexyl
+    hyperfine
     jless
     jq
     kondo
@@ -385,6 +387,7 @@ in
     procs
     ripgrep
     tealdeer
+    vivid
     websocat
     xcolor
     xh

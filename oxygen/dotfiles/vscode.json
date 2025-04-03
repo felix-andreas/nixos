@@ -1,6 +1,7 @@
 {
   "ruff.logLevel": "debug",
   /* Behavior */
+  "explorer.autoReveal": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
   "git.confirmSync": false,
@@ -8,7 +9,9 @@
   "redhat.telemetry.enabled": false,
   "telemetry.telemetryLevel": "off",
   "update.mode": "manual", // disable update notifications
+  "window.customTitleBarVisibility": "never",
   "window.menuBarVisibility": "hidden",
+  "window.titleBarStyle": "native",
   "workbench.colorTheme": "Default Light Modern",
   /* Editor */
   // region: editor
@@ -87,7 +90,9 @@
   //   "--target-dir=target/analyzer"
   // ],
   "rust-analyzer.cargo.features": "all",
+  "rust-analyzer.cargo.allTargets": true,
   "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.check.allTargets": true,
   "rust-analyzer.procMacro.ignored": {
     "leptos_macro": [
       "server",
@@ -258,4 +263,5 @@
   "r.lsp.promptToInstall": false,
   // "roughly.path": "/home/felix/Projects/roughly/target/release/roughly",
   "roughly.path": "/home/felix/Projects/roughly/target/debug/roughly",
+  // "roughly.path": "/home/felix/Projects/roughly/release/roughly-d5183b",
 }
