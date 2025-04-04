@@ -195,7 +195,13 @@ in
         hostname.format = "at [$hostname](bold blue) ";
         directory.format = "in [$path]($style)[$read_only]($read_only_style) ";
         git_branch.format = "on [$branch](bold green) ";
-        character.format = " "; # somehow empty string leads to no linebreak??
+        character.disabled = true;
+        shell = {
+          disabled = false;
+          format = "$indicator";
+          bash_indicator = " "; # somehow empty string leads to no linebreak in bash??
+          nu_indicator = "\n";
+        };
         continuation_prompt = " ";
         container.disabled = true;
       };

@@ -1,5 +1,13 @@
 # aliases
 alias ll = ls -l
+alias system = sudo nixos-rebuild switch --flake ~/.machines#oxygen
+alias home = home-manager switch --flake ~/.machines#oxygen
+alias zed = zeditor
+
+def , [ package: string ...args: string ] {
+    $env.NIXPKGS_ALLOW_UNFREE = 1
+    nix run --impure $"nixpkgs#($package)" -- ...$args
+}
 
 # config
 $env.config.show_banner = false
