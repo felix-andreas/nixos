@@ -39,7 +39,7 @@ in
       enable = true;
       defaultFonts = {
         sansSerif = [ "Inter Display" ];
-        monospace = [ "JetBrains Mono" ];
+        monospace = [ "JetBrainsMono Nerd Font" ];
       };
     };
   };
