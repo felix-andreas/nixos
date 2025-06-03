@@ -34,13 +34,11 @@ in
     "zed/settings.json".source = makeLink "zed-settings.json";
   };
 
-  fonts = {
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        sansSerif = [ "Inter Display" ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
-      };
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      sansSerif = [ "Inter Display" ];
+      monospace = [ "JetBrainsMono Nerd Font" ];
     };
   };
 
@@ -89,7 +87,6 @@ in
     };
     direnv = {
       enable = true;
-      enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
     eza = {
@@ -97,7 +94,6 @@ in
     };
     fzf = {
       enable = true;
-      enableBashIntegration = true;
     };
     git = {
       enable = true;
@@ -187,7 +183,6 @@ in
     nix-index.enable = true;
     starship = {
       enable = true;
-      enableNushellIntegration = true;
       package = pkgs.unstable.starship;
       settings = {
         add_newline = false;
