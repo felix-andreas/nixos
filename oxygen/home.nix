@@ -253,6 +253,7 @@ in
   home.packages = with pkgs; [
     # fonts
     inter
+    nerd-fonts.jetbrains-mono
     # desktop
     unstable.alacritty
     unstable.anytype
