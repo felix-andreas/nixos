@@ -34,11 +34,13 @@ in
     "zed/settings.json".source = makeLink "zed-settings.json";
   };
 
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      sansSerif = [ "Inter Display" ];
-      monospace = [ "JetBrainsMono Nerd Font" ];
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = [ "Inter Display" ];
+        monospace = [ "JetBrains Mono" ];
+      };
     };
   };
 
@@ -251,11 +253,10 @@ in
   home.packages = with pkgs; [
     # fonts
     inter
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # desktop
     unstable.alacritty
     unstable.anytype
-    beekeeper-studio
+    # beekeeper-studio
     bitwarden
     easyeffects
     firefox
@@ -368,7 +369,7 @@ in
     linuxPackages.cpupower
     # classic unix commands
     curl
-    dstat
+    dool
     file
     htop
     lsof

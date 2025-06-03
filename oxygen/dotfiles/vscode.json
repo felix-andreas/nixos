@@ -1,5 +1,4 @@
 {
-  "ruff.logLevel": "debug",
   /* Behavior */
   "explorer.autoReveal": false,
   "explorer.confirmDragAndDrop": false,
@@ -14,7 +13,6 @@
   "window.titleBarStyle": "native",
   "workbench.colorTheme": "Default Light Modern",
   /* Editor */
-  // region: editor
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": "on",
@@ -23,22 +21,20 @@
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.inlayHints.enabled": "offUnlessPressed",
-  "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
   "editor.renderLineHighlight": "gutter",
   "editor.renderWhitespace": "trailing",
-  "editor.rulers": [
-    80,
-    88,
-    100,
-    120
-  ],
+  // "editor.rulers": [
+  //   80,
+  //   88,
+  //   100,
+  //   120
+  // ],
   "editor.scrollBeyondLastColumn": 0,
   "editor.semanticHighlighting.enabled": true,
   "editor.stickyScroll.enabled": true,
   "editor.wordWrap": "on",
-  // endregion
   "diffEditor.ignoreTrimWhitespace": false,
   "files.associations": {
     "*.env": "shellscript"
@@ -58,13 +54,23 @@
     "editor.wordWrapColumn": 120
   },
   /* Copilot */
+  "chat.agent.enabled": true,
+  "editor.inlineSuggest.edits.showCollapsed": true,
+  "editor.inlineSuggest.enabled": false,
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
     "markdown": false,
     "scminput": false
   },
-  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.testGeneration.instructions": [
+    {
+      "text": "Don't add comments that only explain the code below. Use comments only to clarify intent or document non-obvious behavior."
+    },
+  ],
+  "github.copilot.nextEditSuggestions.enabled": true,
   /* SSH */
   "remote.SSH.useLocalServer": false,
   /* HTML */
@@ -89,9 +95,10 @@
   // "rust-analyzer.check.extraArgs": [
   //   "--target-dir=target/analyzer"
   // ],
-  "rust-analyzer.cargo.features": "all",
+  // "rust-analyzer.cargo.features": "all",
   "rust-analyzer.cargo.allTargets": true,
   "rust-analyzer.check.command": "clippy",
+  // "rust-analyzer.check.features": "all",
   "rust-analyzer.check.allTargets": true,
   "rust-analyzer.procMacro.ignored": {
     "leptos_macro": [
@@ -111,12 +118,9 @@
       }
     }
   },
-  "i18n-ally.displayLanguage": "de",
   /* Zig */
-  // "zigLanguageClient.path": "/home/felix/.nix-profile/bin/zls",
-  "zig.path": "",
+  "zig.zls.enabled": "on",
   "zig.zls.path": "",
-  "zig.initialSetupDone": true,
   /* PLUGINS */
   /* REST Client */
   "rest-client.previewOption": "exchange",
@@ -259,9 +263,13 @@
   "mojo.modularHomePath": "/home/felix/.modular",
   "jupyter.askForKernelRestart": false,
   "r.lsp.enabled": false,
-  "window.zoomLevel": -2,
   "r.lsp.promptToInstall": false,
-  // "roughly.path": "/home/felix/Projects/roughly/target/release/roughly",
   "roughly.path": "/home/felix/Projects/roughly/target/debug/roughly",
+  // "roughly.path": "/home/felix/Projects/roughly/target/release/roughly",
   // "roughly.path": "/home/felix/Projects/roughly/release/roughly-d5183b",
+  "output.smartScroll.enabled": false,
+  "window.zoomLevel": -2,
+  "files.exclude": {
+    "**/.git": false
+  }
 }
