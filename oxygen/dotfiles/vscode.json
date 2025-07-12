@@ -70,7 +70,7 @@
       "text": "Don't add comments that only explain the code below. Use comments only to clarify intent or document non-obvious behavior."
     },
   ],
-  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.enabled": false,
   /* SSH */
   "remote.SSH.useLocalServer": false,
   /* HTML */
@@ -265,11 +265,17 @@
   "r.lsp.enabled": false,
   "r.lsp.promptToInstall": false,
   "roughly.path": "/home/felix/Projects/roughly/target/debug/roughly",
+  "roughly.args": [
+    "server",
+    "--experimental-features",
+    "goto_definition"
+  ],
   // "roughly.path": "/home/felix/Projects/roughly/target/release/roughly",
   // "roughly.path": "/home/felix/Projects/roughly/release/roughly-d5183b",
   "output.smartScroll.enabled": false,
   "window.zoomLevel": -2,
   "files.exclude": {
     "**/.git": false
-  }
+  },
+  "git.blame.statusBarItem.enabled": true,
 }

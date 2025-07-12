@@ -1,3 +1,4 @@
-theme = dark:Adwaita Dark,light:Adwaita
-mouse-scroll-multiplier = 2
 command = nu
+theme = light:Adwaita,dark:Adwaita Dark
+
+mouse-scroll-multiplier = 2

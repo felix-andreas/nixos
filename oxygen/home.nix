@@ -9,8 +9,8 @@ in
   # https://github.com/NixOS/nixpkgs/pull/185987
   # https://github.com/nix-community/home-manager/issues/1011
   home.sessionPath = [
-    "${config.xdg.dataHome}/pnpm"
     "${config.home.homeDirectory}/.cargo/bin"
+    "${config.home.homeDirectory}/.bun/bin"
   ];
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -78,7 +78,7 @@ in
         # https://github.com/NixOS/nixpkgs/pull/185987
         # https://github.com/nix-community/home-manager/issues/1011
         export PNPM_HOME=${config.xdg.dataHome}/pnpm
-        export PATH="${config.xdg.dataHome}/pnpm:${config.home.homeDirectory}/.cargo/bin:$PATH"
+        export PATH="${config.home.homeDirectory}/.bun/bin:${config.home.homeDirectory}/.cargo/bin:$PATH"
       '';
     };
     bat = {
@@ -352,6 +352,7 @@ in
         data_table
         dplyr
         purrr
+        # rextendr
       ];
     })
     # wasm

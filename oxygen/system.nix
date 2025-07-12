@@ -109,7 +109,6 @@
   };
 
   programs = {
-    # adb.enable = true;
     # hyprland = {
     #   enable = true;
     #   xwayland.enable = true;
