@@ -1,6 +1,5 @@
 # edit files
-alias machines='code $HOME/.machines'
-alias dotfiles='code $HOME/.machines/oxygen/dotfiles'
+alias dotfiles='code $HOME/.nixos/oxygen/dotfiles'
 notes() { vi "$HOME/Projects/notes/$1.md"; }
 work() { vi "$HOME/Projects/felix/$1.md"; }
 
@@ -9,8 +8,8 @@ alias open='xdg-open'
 alias trash='gio trash'
 
 # nix
-alias system='sudo nixos-rebuild switch --flake ~/.machines#oxygen'
-alias home='home-manager switch --flake ~/.machines#oxygen'
+alias system='sudo nixos-rebuild switch --flake ~/.nixos#oxygen'
+alias home='home-manager switch --flake ~/.nixos#oxygen'
 alias set-interpreter='patchelf --set-interpreter $(nix eval --raw nixpkgs#stdenv.cc)/nix-support/dynamic-linker'
 ,() { NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#"$1" -- "${@:2}"; }
 shell() { NIXPKGS_ALLOW_UNFREE=1 nix shell --impure $(printf "nixpkgs#%s " "$@"); }

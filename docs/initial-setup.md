@@ -41,7 +41,7 @@ During the initial setup, we need to access the files of the `machines` reposito
     After you log in from another another computer, you should be able to clone the `machines` repo:
 
     ```sh
-    git clone git@github.com/felix-andreas/nixos .machines
+    git clone git@github.com/felix-andreas/nixos .nixos
     ```
 
 ## Partitioning
@@ -111,7 +111,7 @@ nvme0n1                            476.9G
 Create the hardware configuration:
 
 ```
-nixos-generate-config --root .machines/<name>
+nixos-generate-config --root .nixos/<name>
 ```
 
 > :Note: TODO: we can probably just use `by-label` instead of `by-uuid`
@@ -156,7 +156,7 @@ sudo nixos-install --no-root-password --root /mnt --flake .#<name>
 After the installation completes, restart the computer and activate the `home-manager` configuration:
 
 ```
-nix run ~/.machines#homeConfigurations.<name>.activationPackage
+nix run ~/.nixos#homeConfigurations.<name>.activationPackage
 ```
 
 ## References

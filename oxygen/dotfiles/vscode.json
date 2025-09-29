@@ -20,6 +20,12 @@
   "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": false
+  },
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
@@ -265,17 +271,44 @@
   "r.lsp.enabled": false,
   "r.lsp.promptToInstall": false,
   "roughly.path": "/home/felix/Projects/roughly/target/debug/roughly",
-  "roughly.args": [
-    "server",
-    "--experimental-features",
-    "goto_definition"
+  // "roughly.args": ["--experimental-features", "all", "server"],
+  "roughly.experimentalFeatures": [
+    "goto_definition",
+    "goto_references",
+    "range_formatting",
+    "rename",
   ],
-  // "roughly.path": "/home/felix/Projects/roughly/target/release/roughly",
-  // "roughly.path": "/home/felix/Projects/roughly/release/roughly-d5183b",
   "output.smartScroll.enabled": false,
   "window.zoomLevel": -2,
   "files.exclude": {
     "**/.git": false
   },
   "git.blame.statusBarItem.enabled": true,
+  "pgsql.serverGroups": [
+    {
+      "name": "Servers",
+      "id": "522FDE68-4C67-479F-9530-014560EDAE6C",
+      "isDefault": true
+    }
+  ],
+  "pgsql.connections": [
+    {
+      "id": "0FAB1E01-1BC2-44DE-B8F7-9FF10112D664",
+      "groupId": "522FDE68-4C67-479F-9530-014560EDAE6C",
+      "authenticationType": "SqlLogin",
+      "connectTimeout": 15,
+      "applicationName": "vscode-pgsql",
+      "clientEncoding": "utf8",
+      "sslmode": "require",
+      "server": "ep-jolly-cake-a9tzwg63-pooler.gwc.azure.neon.tech",
+      "user": "neondb_owner",
+      "port": "",
+      "database": "neondb",
+      "password": "",
+      "profileName": "ep-jolly-cake-a9tzwg63-pooler.gwc.azure.neon.tech, neondb (neondb_owner)",
+      "displayName": "ep-jolly-cake-a9tzwg63-pooler.gwc.azure.neon.tech, neondb (neondb_owner)",
+      "savePassword": true,
+      "expiresOn": 0
+    }
+  ],
 }

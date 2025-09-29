@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  dotfiles = "${config.home.homeDirectory}/.machines/oxygen/dotfiles";
+  dotfiles = "${config.home.homeDirectory}/.nixos/oxygen/dotfiles";
   makeLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
 in
 {
@@ -105,7 +105,10 @@ in
           contents.user.email = "felix.andreas@leptonic.solutions";
         }
       ];
-      # ignores = [ ".vscode" ];
+      ignores = [
+        ".local/"
+        "*.local*"
+      ];
       extraConfig = {
         init.defaultBranch = "main";
         push.autoSetupRemote = true;

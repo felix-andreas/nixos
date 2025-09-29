@@ -21,9 +21,7 @@
     };
     tmp.useTmpfs = true;
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = kernel-fix.linuxPackages;
-    # kernelPackages = pkgs.linuxPackages_5_15;
-    # kernelPackages = pkgs.linuxPackages_6_6;
+    # kernelPackages = kernel-fix.linuxPackages;
     # Show proper password prompt
     plymouth.enable = true;
     initrd.systemd.enable = true; # (seems to be experimental)
@@ -53,7 +51,6 @@
         "wheel"
       ];
       password = "asdf";
-      # shell = pkgs.unstable.nushell;
     };
   };
 

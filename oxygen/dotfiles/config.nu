@@ -1,7 +1,7 @@
 # aliases
 alias ll = ls -l
-alias system = sudo nixos-rebuild switch --flake ~/.machines#oxygen
-alias home = home-manager switch --flake ~/.machines#oxygen
+alias system = sudo nixos-rebuild switch --flake ~/.nixos#oxygen
+alias home = home-manager switch --flake ~/.nixos#oxygen
 alias zed = zeditor
 
 def , [ package: string ...args: string ] {

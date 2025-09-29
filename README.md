@@ -5,7 +5,7 @@
 Run:
 
 ```
-sudo nixos-rebuild switch --flake ~/.machines#<name>
+sudo nixos-rebuild switch --flake ~/.nixos#<name>
 ```
 
 ## Update the `home-manager` Configuration
@@ -13,5 +13,5 @@ sudo nixos-rebuild switch --flake ~/.machines#<name>
 Run:
 
 ```
-home-manager switch --flake ~/.machines#<name>
+home-manager switch --flake ~/.nixos#<name>
 ```
