@@ -299,7 +299,7 @@ in
     # nix
     nix-index
     nixpkgs-fmt
-    nixfmt-rfc-style
+    unstable.unixfmt-rfc-style
     patchelf
     unstable.nickel
     unstable.nil
@@ -313,21 +313,17 @@ in
     # python
     (python312.withPackages (
       ps: with ps; [
-        httpx
+        # tools
+        pytest
         ipykernel
         ipython
+        # libs
+        httpx
         matplotlib
         numpy
         pandas
+        polars
         scipy
-        # tooling
-        # black # use ruff instead
-        isort
-        mypy
-        pip
-        pylint
-        pytest
-        rope
       ]
     ))
     unstable.pyright

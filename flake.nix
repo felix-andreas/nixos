@@ -4,7 +4,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # used by felix, contains Linux kernel 5.15.90 for mouse freeze
     # nixpkgs-kernel-fix.url = "github:nixos/nixpkgs/0218941ea68b4c625533bead7bbb94ccce52dceb";
-    nixpkgs-kernel.url = "github:nixos/nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";

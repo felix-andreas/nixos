@@ -115,15 +115,6 @@
   /* Nix */
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
-  "nix.serverSettings": {
-    "nil": {
-      "formatting": {
-        "command": [
-          "nixpkgs-fmt"
-        ]
-      }
-    }
-  },
   /* Zig */
   "zig.zls.enabled": "on",
   "zig.zls.path": "",
@@ -280,35 +271,8 @@
   ],
   "output.smartScroll.enabled": false,
   "window.zoomLevel": -2,
-  "files.exclude": {
-    "**/.git": false
-  },
-  "git.blame.statusBarItem.enabled": true,
-  "pgsql.serverGroups": [
-    {
-      "name": "Servers",
-      "id": "522FDE68-4C67-479F-9530-014560EDAE6C",
-      "isDefault": true
-    }
-  ],
-  "pgsql.connections": [
-    {
-      "id": "0FAB1E01-1BC2-44DE-B8F7-9FF10112D664",
-      "groupId": "522FDE68-4C67-479F-9530-014560EDAE6C",
-      "authenticationType": "SqlLogin",
-      "connectTimeout": 15,
-      "applicationName": "vscode-pgsql",
-      "clientEncoding": "utf8",
-      "sslmode": "require",
-      "server": "ep-jolly-cake-a9tzwg63-pooler.gwc.azure.neon.tech",
-      "user": "neondb_owner",
-      "port": "",
-      "database": "neondb",
-      "password": "",
-      "profileName": "ep-jolly-cake-a9tzwg63-pooler.gwc.azure.neon.tech, neondb (neondb_owner)",
-      "displayName": "ep-jolly-cake-a9tzwg63-pooler.gwc.azure.neon.tech, neondb (neondb_owner)",
-      "savePassword": true,
-      "expiresOn": 0
-    }
-  ],
+  // note this also shows git files on ctrl + p
+  // "files.exclude": {
+  //   "**/.git": false
+  // },
 }
