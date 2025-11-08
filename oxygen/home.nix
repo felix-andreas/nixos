@@ -259,8 +259,8 @@ in
     bitwarden
     easyeffects
     firefox
-    ghostty
-    gimp
+    unstable.ghostty
+    unstable.gimp3
     (google-chrome.override {
       # see https://bugs.chromium.org/p/chromium/issues/detail?id=1356014#c54
       commandLineArgs = "--disable-features=WaylandFractionalScaleV1";
@@ -299,7 +299,7 @@ in
     # nix
     nix-index
     nixpkgs-fmt
-    unstable.unixfmt-rfc-style
+    unstable.nixfmt-rfc-style
     patchelf
     unstable.nickel
     unstable.nil

@@ -271,8 +271,15 @@
   ],
   "output.smartScroll.enabled": false,
   "window.zoomLevel": -2,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   // note this also shows git files on ctrl + p
   // "files.exclude": {
   //   "**/.git": false
   // },
+  "tailwindCSS.experimental.classRegex": ["class: \"(.*)\"", "Attrs.class \"(.*)\""],
+  "tailwindCSS.includeLanguages": {
+      "rust": "html",
+      "elm": "html"
+  },
 }

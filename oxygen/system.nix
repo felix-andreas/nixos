@@ -1,4 +1,4 @@
-{ pkgs, kernel-fix, ... }:
+{ pkgs, ... }:
 
 {
   nix = {

@@ -1,7 +1,7 @@
 command = nu
 theme = light:Adwaita,dark:Adwaita Dark
 
-mouse-scroll-multiplier = 2
+mouse-scroll-multiplier = 3
 
 # otherwise cargo has bad contrast since https://github.com/rust-lang/cargo/pull/16019
 palette = 10=#2ec27e
