@@ -1,13 +1,13 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # contains Linux kernel 5.15.90 for mouse freeze
-    # nixpkgs-kernel-fix.url = "github:nixos/nixpkgs/0218941ea68b4c625533bead7bbb94ccce52dceb";
+    nixpkgs-kernel-fix.url = "github:nixos/nixpkgs/0218941ea68b4c625533bead7bbb94ccce52dceb";
   };
 
   outputs =
@@ -15,6 +15,7 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      nixpkgs-kernel-fix,
       home-manager,
     }:
     {
@@ -23,6 +24,7 @@
           inputs = inputs;
           stable = makePkgs system nixpkgs;
           unstable = makePkgs system nixpkgs-unstable;
+          kernel-fix = makePkgs system nixpkgs-kernel-fix;
         };
         makePkgs =
           system: pkgs:

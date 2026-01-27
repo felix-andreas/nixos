@@ -62,7 +62,7 @@ in
   programs = {
     nushell = {
       enable = true;
-      package = pkgs.unstable.nushell;
+      package = pkgs.nushell;
       configFile.text = ''
         source ${config.xdg.configHome}/nushell/extra-config.nu
       '';
@@ -97,8 +97,32 @@ in
     };
     git = {
       enable = true;
-      userName = "Felix Andreas";
-      userEmail = "felix.andreas95@googlemail.com";
+      settings = {
+        user = {
+          name = "Felix Andreas";
+          email = "felix.andreas95@googlemail.com";
+        };
+        init.defaultBranch = "main";
+        push.autoSetupRemote = true;
+        alias = {
+          s = "status -uall";
+          a = "add";
+          aa = "add --all";
+          c = "commit --verbose";
+          cm = "c --message";
+          ca = "c --amend";
+          can = "ca --no-edit";
+          cp = "!git c && git push";
+          cmp = "!git cm \"$1\" && git push && :";
+          aac = "!git aa && git c";
+          aacm = "!git aa && git cm";
+          aacp = "!git aa && git cp";
+          aacmp = "!git aa && git cmp";
+          prp = "!git pull --rebase && git push";
+          size = "!git ls-tree -r --long HEAD | awk '{sum+=$4} END {print sum}' | numfmt --to=iec";
+          new = "!git switch main && git pull && git switch -c";
+        };
+      };
       includes = [
         {
           condition = "hasconfig:remote.*.url:git@github.com\:leptonic-solutions/**";
@@ -109,33 +133,12 @@ in
         ".local/"
         "*.local*"
       ];
-      extraConfig = {
-        init.defaultBranch = "main";
-        push.autoSetupRemote = true;
-      };
-      aliases = {
-        s = "status -uall";
-        a = "add";
-        aa = "add --all";
-        c = "commit --verbose";
-        cm = "c --message";
-        ca = "c --amend";
-        can = "ca --no-edit";
-        cp = "!git c && git push";
-        cmp = "!git cm \"$1\" && git push && :";
-        aac = "!git aa && git c";
-        aacm = "!git aa && git cm";
-        aacp = "!git aa && git cp";
-        aacmp = "!git aa && git cmp";
-        prp = "!git pull --rebase && git push";
-        size = "!git ls-tree -r --long HEAD | awk '{sum+=$4} END {print sum}' | numfmt --to=iec";
-        new = "!git switch main && git pull && git switch -c";
-      };
       attributes = [ "*.lockb binary diff=lockb" ];
-      delta = {
-        enable = true;
-        options.syntax-theme = "GitHub";
-      };
+    };
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options.syntax-theme = "GitHub";
     };
     home-manager.enable = true;
     neovim = {
@@ -255,8 +258,6 @@ in
     # desktop
     unstable.alacritty
     unstable.anytype
-    # beekeeper-studio
-    bitwarden
     easyeffects
     firefox
     unstable.ghostty
@@ -294,7 +295,6 @@ in
     skopeo
     # kubernetes
     k9s
-    kube3d
     kubectl
     # nix
     nix-index
@@ -356,7 +356,7 @@ in
     })
     # wasm
     wabt
-    wasmer
+    # wasmer
     # zig
     unstable.zig
     unstable.zls

@@ -1,14 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, kernel-fix, ... }:
 
 {
   nix = {
     settings = {
-      experimental-features = "nix-command flakes";
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
       auto-optimise-store = true;
+      experimental-features = "nix-command flakes";
+    };
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 90d";
     };
   };
   nixpkgs.config.allowUnfree = true;
@@ -17,19 +17,18 @@
     binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
       systemd-boot.enable = true;
+      systemd-boot.configurationLimit = 16;
       efi.canTouchEfiVariables = true;
     };
     tmp.useTmpfs = true;
     supportedFilesystems = [ "ntfs" ];
-    # kernelPackages = kernel-fix.linuxPackages;
+    kernelPackages = kernel-fix.linuxPackages;
     # Show proper password prompt
     plymouth.enable = true;
     initrd.systemd.enable = true; # (seems to be experimental)
   };
 
-  systemd.extraConfig = ''
-    DefaultTimeoutStopSec=10s
-  '';
+  systemd.settings.Manager.DefaultTimeoutStopSec = "10s";
 
   # todo: force hibernation to ensure encryption
   # systemd.sleep.extraConfig = ''
@@ -54,23 +53,26 @@
     };
   };
 
-  # services.intune.enable = true;
-  services.xserver = {
-    enable = true;
+  services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-
-    xkb = {
-      layout = "custom";
-      extraLayouts.custom = {
-        symbolsFile = ./keyboard-layout;
-        description = "Custom Keyboard Layout";
-        languages = [ "eng" ];
-      };
-    };
+    # intune.enable = true;
+    # legacy -> switched to kanata
+    # xserver.xkb = {
+    #   layout = "custom";
+    #   extraLayouts.custom = {
+    #     symbolsFile = ./keyboard-layout;
+    #     description = "Custom Keyboard Layout";
+    #     languages = [ "eng" ];
+    #   };
+    # };
   };
 
-  hardware.pulseaudio.enable = false;
+  services.kanata = {
+    enable = true;
+    keyboards.default.configFile = ./kanata.kbd;
+  };
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -102,7 +104,6 @@
       };
     };
     podman.enable = true;
-    lxd.enable = true;
   };
 
   programs = {

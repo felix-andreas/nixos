@@ -1,0 +1,31 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps lalt 102d
+  q w e r
+  a s d f
+  h j k l
+  v
+)
+
+(deflayer base
+  esc @nav lsft
+  q w e r
+  a s d f
+  h j k l
+  v
+)
+
+(deflayer nav
+  _ _ _
+  home up   end  del
+  left down rght bspc
+  left down up   rght
+  ret
+)
+
+(defalias
+  nav (layer-while-held nav)
+)
