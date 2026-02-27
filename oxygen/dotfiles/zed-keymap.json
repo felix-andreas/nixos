@@ -1,27 +1,72 @@
 [
   // is there no setting to disable all ctrl keys??
   {
-    "context": "Editor && !VimWaiting && !menu",
+    "context": "Editor",
     "bindings": {
-      "ctrl-w": "pane::CloseActiveItem",
-      "ctrl-shift-t": "pane::ReopenClosedItem",
-      "ctrl-c": "editor::Copy", // vim default: return to normal mode
-      "ctrl-d": "editor::SelectNext", // vim default: return to normal mode
-      "ctrl-x": "editor::Cut", // vim default: increment
-      "ctrl-v": "editor::Paste", // vim default: visual block mode
-      // "ctrl-y": "editor::Undo",       // vim default: line up
-      "ctrl-f": "buffer_search::Deploy", // vim default: page down
-      "ctrl-a": "editor::SelectAll" // vim default: increment
-      // "ctrl-o": "workspace::Open",    // vim default: go back
-    }
+      "alt-enter": [
+        "action::Sequence",
+        [
+          "editor::CopyAndTrim",
+          ["workspace::ActivatePane", 0],
+          // ["pane::ActivateItem", 0],
+          ["workspace::SendKeystrokes", "ctrl-shift-v enter"],
+          // "terminal::Paste",
+          // "editor::ToggleFocus",
+        ],
+      ],
+    },
+  },
+  // vim ctrl keys
+  {
+    "bindings": {
+      "ctrl-w": "workspace::CloseActiveDock",
+    },
   },
   {
-    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "context": "Editor",
+    "bindings": {
+      "ctrl-s": "workspace::Save", // vim default: show signature
+    },
+  },
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-f": "buffer_search::Deploy", // vim default: page down
+      "ctrl-c": "editor::Copy", // vim default: return to normal mode
+      // "ctrl-x": "editor::Cut", // vim default: decrement
+      "ctrl-v": "editor::Paste", // vim default: visual block mode
+      "ctrl-a": "editor::SelectAll", // vim default: increment
+      // "ctrl-y": "editor::Undo",               // vim default: line up
+      "ctrl-t": "project_symbols::Toggle", // vim default: go to older tag
+      // "ctrl-o": "workspace::Open",            // vim default: go back
+      "ctrl-b": "workspace::ToggleLeftDock", // vim default: down
+    },
+  },
+  // vim adjustments
+  {
+    "context": "Editor && vim_mode == normal",
     "bindings": {
       "> >": null,
       "< <": null,
       ">": "vim::Indent",
-      "<": "vim::Outdent"
-    }
-  }
+      "<": "vim::Outdent",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "<": ["workspace::SendKeystrokes", "g < g v"],
+      ">": ["workspace::SendKeystrokes", "g > g v"],
+      "g <": "vim::Outdent",
+      "g >": "vim::Indent",
+    },
+  },
+  // tasks
+  {
+    "context": "BufferSearchBar",
+    "bindings": {
+      "enter": "search::SelectNextMatch",
+      "shift-enter": "search::SelectPreviousMatch",
+    },
+  },
 ]

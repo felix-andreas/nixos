@@ -56,40 +56,19 @@
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    # intune.enable = true;
-    # legacy -> switched to kanata
-    # xserver.xkb = {
-    #   layout = "custom";
-    #   extraLayouts.custom = {
-    #     symbolsFile = ./keyboard-layout;
-    #     description = "Custom Keyboard Layout";
-    #     languages = [ "eng" ];
-    #   };
-    # };
-  };
-
-  services.kanata = {
-    enable = true;
-    keyboards.default.configFile = ./kanata.kbd;
-  };
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  services = {
+    flatpak.enable = true;
+    kanata = {
+      enable = true;
+      keyboards.default.configFile = ./kanata.kbd;
+    };
+    # printer stuff. not sure what is actually needed
     avahi.enable = true;
     avahi.nssmdns4 = true;
-    flatpak.enable = true;
-    fwupd.enable = true;
     printing.enable = true;
   };
 
   virtualisation = {
+    podman.enable = true;
     docker = {
       enable = true;
       # deutsche bahn wifi fix
@@ -103,14 +82,9 @@
         ];
       };
     };
-    podman.enable = true;
   };
 
   programs = {
-    # hyprland = {
-    #   enable = true;
-    #   xwayland.enable = true;
-    # };
     nix-ld = {
       enable = true;
       libraries =

@@ -1,38 +1,44 @@
 {
+  // recently changed
+  // telemetry
+  "icon_theme": "JetBrains New UI Icons (Light)",
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620"
-    },
-    "version": "2"
-  },
+  // base
+  "ui_font_size": 16,
+  "buffer_font_size": 12,
+  "buffer_line_height": "standard",
   "show_wrap_guides": true,
-  "wrap_guides": [
-    80,
-    88,
-    100,
-    120
-  ],
+  "wrap_guides": [80, 88, 100, 120],
   "cursor_blink": false,
-  "theme": "Github Light",
-  "experimental.theme_overrides": {
-    "border": "#d1d9e0ff",
-    "border.variant": "#d1d9e0ff",
-    "editor.active_line.background": "#f6f8faff",
-    "editor.wrap_guide": "#e3e8ecff",
-    "icon.border": "#d1d9e0ff",
-    "pane.focused_border": "#d1d9e0ff",
-    "panel.focused_border": "#d1d9e0ff",
-    "scrollbar.thumb.background": "#dae0e6ff"
+  "ui_font_family": "Inter Variable",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "search": {
+    "center_on_match": true,
   },
+  "theme": "GitHub Light",
+  // "experimental.theme_overrides": {
+  //   "border": "#d1d9e0ff",
+  //   "border.variant": "#d1d9e0ff",
+  //   "editor.active_line.background": "#f6f8faff",
+  //   "editor.wrap_guide": "#e3e8ecff",
+  //   "icon.border": "#d1d9e0ff",
+  //   "pane.focused_border": "#d1d9e0ff",
+  //   "panel.focused_border": "#d1d9e0ff",
+  //   "scrollbar.thumb.background": "#dae0e6ff",
+  // },
+  // vim
   "vim_mode": true,
-  "ui_font_size": 18,
-  "buffer_font_size": 15,
+  "vim": {
+    "use_system_clipboard": "never",
+  },
+  // languages
   "languages": {
+    "R": {
+      "language_servers": ["roughly"],
+    },
     "Python": {
       "tab_size": 4,
       "format_on_save": "on",
@@ -41,11 +47,11 @@
           "command": "bash",
           "arguments": [
             "-c",
-            "ruff check --exit-zero --fix --unsafe-fixes --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}"
-          ]
-        }
-      }
-    }
+            "ruff check --exit-zero --fix --unsafe-fixes --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}",
+          ],
+        },
+      },
+    },
   },
   "lsp": {
     // note: only working in fhs environment :/
@@ -53,14 +59,37 @@
       "settings": {
         "python.analysis": {
           "diagnosticMode": "workspace",
-          "typeCheckingMode": "strict"
+          "typeCheckingMode": "strict",
+        },
+      },
+    },
+    "roughly": {
+      "binary": {
+        "path": "/home/felix/Projects/roughly/target/debug/roughly",
+        "arguments": ["server", "--stdio"],
+      },
+    },
+  },
+  // ai
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^bun\\b"
+            }
+          ]
         }
       }
     },
-    "nix": {
-      "binary": {
-        "path_lookup": true
-      }
-    }
-  }
+    "dock": "left",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-opus-4.6",
+    },
+  },
+  "edit_predictions": {
+    "provider": "zed",
+  },
 }

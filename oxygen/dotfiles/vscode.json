@@ -282,4 +282,13 @@
       "rust": "html",
       "elm": "html"
   },
+  "chat.tools.terminal.autoApprove": {
+    "/^npm run dev 2>&1 \\| head -20 &$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "npx": true,
+    "bunx": true
+  },
+  "terminal.integrated.stickyScroll.enabled": false,
 }

@@ -41,13 +41,9 @@ if vim.g.vscode == nil then
 
     -- LSP Config
 
-    local nvim_lsp = require("lspconfig")
-    nvim_lsp.pyright.setup({})
-    nvim_lsp.nixd.setup({})
-    nvim_lsp.rust_analyzer.setup({
-        -- on_attach = function(client) 
-        --     require("completion").on_attach(client) 
-        -- end,
+    vim.lsp.config.pyright = {}
+    vim.lsp.config.nixd = {}
+    vim.lsp.config.rust_analyzer = {
         settings = {
             ["rust-analyzer"] = {
                 assist = {
@@ -62,5 +58,8 @@ if vim.g.vscode == nil then
                 },
             }
         }
-    })
+    }
+    vim.lsp.enable('pyright')
+    vim.lsp.enable('nixd')
+    vim.lsp.enable('rust_analyzer')
 end

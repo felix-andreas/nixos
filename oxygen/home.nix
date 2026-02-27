@@ -2,7 +2,7 @@
 
 let
   dotfiles = "${config.home.homeDirectory}/.nixos/oxygen/dotfiles";
-  makeLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+  makeLink = target: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${target}";
 in
 {
   # does not work on wayland until NixOS 22.11 (see below in bashrcExtra)
@@ -256,23 +256,19 @@ in
     inter
     nerd-fonts.jetbrains-mono
     # desktop
-    unstable.alacritty
     unstable.anytype
     easyeffects
     firefox
     unstable.ghostty
     unstable.gimp3
-    (google-chrome.override {
-      # see https://bugs.chromium.org/p/chromium/issues/detail?id=1356014#c54
-      commandLineArgs = "--disable-features=WaylandFractionalScaleV1";
-    })
-    unstable.helix
+    google-chrome
     spotify
-    qemu
     vlc
     wl-clipboard # access clipboard from console on Wayland
     xclip # access clipboard from console on X
+    unstable.helix
     unstable.zed-editor.fhs
+    unstable.opencode
     # cli tools
     ast-grep
     brotli
@@ -280,8 +276,10 @@ in
     ffmpeg
     just
     pandoc
-    scrcpy
+    qemu
     zellij
+    # android
+    scrcpy
     # git
     git
     git-lfs
@@ -289,7 +287,7 @@ in
     # containers
     buildah
     cntr
-    unstable.distrobox
+    distrobox
     dive
     podman-compose
     skopeo
@@ -297,21 +295,22 @@ in
     k9s
     kubectl
     # nix
+    nixfmt
+    nix-diff
     nix-index
-    nixpkgs-fmt
-    unstable.nixfmt-rfc-style
+    nix-tree
     patchelf
+    unstable.devenv
     unstable.nickel
     unstable.nil
     unstable.nixd
-    unstable.devenv
     # c
     gcc
     gdb
     # rust
-    # rustup
+    rustup
     # python
-    (python312.withPackages (
+    (python3.withPackages (
       ps: with ps; [
         # tools
         pytest
@@ -340,9 +339,9 @@ in
     go
     # js
     nodejs
-    nodePackages.pnpm
     bun
     deno
+    nodePackages.pnpm
     nodePackages.yaml-language-server
     # R
     (rWrapper.override {
@@ -360,12 +359,11 @@ in
     # zig
     unstable.zig
     unstable.zls
-    # utils
+    # linux utils
     sysstat
     linuxPackages.cpupower
     # classic unix commands
     curl
-    dool
     file
     htop
     lsof
