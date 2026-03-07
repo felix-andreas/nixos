@@ -3,6 +3,14 @@
 let
   dotfiles = "${config.home.homeDirectory}/.nixos/oxygen/dotfiles";
   makeLink = target: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${target}";
+  backup-git = pkgs.writeShellApplication {
+    name = "backup-git";
+    runtimeInputs = with pkgs; [
+      git
+      libnotify
+    ];
+    text = builtins.readFile ./backup-git.sh;
+  };
 in
 {
   # does not work on wayland until NixOS 22.11 (see below in bashrcExtra)
@@ -252,6 +260,8 @@ in
   };
 
   home.packages = with pkgs; [
+    # custom scripts
+    backup-git
     # fonts
     inter
     nerd-fonts.jetbrains-mono
@@ -264,11 +274,12 @@ in
     google-chrome
     spotify
     vlc
+    libnotify # send desktop notifcations via cli
     wl-clipboard # access clipboard from console on Wayland
     xclip # access clipboard from console on X
     unstable.helix
-    unstable.zed-editor.fhs
     unstable.opencode
+    unstable.zed-editor.fhs
     # cli tools
     ast-grep
     brotli
@@ -338,11 +349,10 @@ in
     # go
     go
     # js
-    nodejs
+    nodejs_24
     bun
     deno
-    nodePackages.pnpm
-    nodePackages.yaml-language-server
+    pnpm
     # R
     (rWrapper.override {
       packages = with pkgs.rPackages; [
@@ -395,4 +405,28 @@ in
     yj
     zoxide
   ];
+
+  # notes backup: auto-commit and push ~/.notes to GitHub once per day
+  systemd.user.services.backup-git = {
+    Unit = {
+      Description = "Backup ~/.notes to GitHub";
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${backup-git}/bin/backup-git ${config.home.homeDirectory}/.notes";
+    };
+  };
+
+  systemd.user.timers.backup-git = {
+    Unit = {
+      Description = "Daily backup of ~/.notes";
+    };
+    Timer = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
+  };
 }

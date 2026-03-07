@@ -3,10 +3,17 @@ alias ll = ls -l
 alias system = sudo nixos-rebuild switch --flake ~/.nixos#oxygen
 alias home = home-manager switch --flake ~/.nixos#oxygen
 alias zed = zeditor
+alias notes = zeditor ~/.notes
+alias nixos = zeditor ~/.nixos
 
 def , [ package: string ...args: string ] {
     $env.NIXPKGS_ALLOW_UNFREE = 1
     nix run --impure $"nixpkgs#($package)" -- ...$args
+}
+
+def shell [ ...packages: string ] {
+    $env.NIXPKGS_ALLOW_UNFREE = 1
+    nix shell --impure ...($packages | each { |p| $"nixpkgs#($p)" })
 }
 
 # config
