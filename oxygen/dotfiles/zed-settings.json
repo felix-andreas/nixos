@@ -1,7 +1,7 @@
 {
   // recently changed
+  "auto_signature_help": true,
   // telemetry
-  "icon_theme": "JetBrains New UI Icons (Light)",
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
@@ -18,6 +18,8 @@
   "search": {
     "center_on_match": true,
   },
+  "soft_wrap": "editor_width",
+  "icon_theme": "JetBrains New UI Icons (Light)",
   "theme": "GitHub Light",
   // "experimental.theme_overrides": {
   //   "border": "#d1d9e0ff",
@@ -54,15 +56,6 @@
     },
   },
   "lsp": {
-    // note: only working in fhs environment :/
-    "pyright": {
-      "settings": {
-        "python.analysis": {
-          "diagnosticMode": "workspace",
-          "typeCheckingMode": "strict",
-        },
-      },
-    },
     "roughly": {
       "binary": {
         "path": "/home/felix/Projects/roughly/target/debug/roughly",
@@ -72,24 +65,30 @@
   },
   // ai
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-opus-4.6",
+      "enable_thinking": false,
+    },
+    "default_profile": "write",
     "tool_permissions": {
       "tools": {
+        "save_file": {
+          "default": "allow",
+        },
         "terminal": {
-          "always_allow": [
-            {
-              "pattern": "^bun\\b"
-            }
-          ]
-        }
-      }
+          "default": "allow",
+        },
+      },
+      "default": "allow",
     },
-    "dock": "left",
+    "dock": "right",
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-opus-4.6",
     },
   },
   "edit_predictions": {
-    "provider": "zed",
+    "mode": "subtle",
   },
 }

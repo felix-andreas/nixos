@@ -25,6 +25,7 @@
   {
     "context": "Editor",
     "bindings": {
+      "ctrl-k ctrl-m": "workspace::ToggleZoom",
       "ctrl-s": "workspace::Save", // vim default: show signature
     },
   },
@@ -33,7 +34,7 @@
     "bindings": {
       "ctrl-f": "buffer_search::Deploy", // vim default: page down
       "ctrl-c": "editor::Copy", // vim default: return to normal mode
-      // "ctrl-x": "editor::Cut", // vim default: decrement
+      "ctrl-x": "editor::Cut", // vim default: decrement
       "ctrl-v": "editor::Paste", // vim default: visual block mode
       "ctrl-a": "editor::SelectAll", // vim default: increment
       // "ctrl-y": "editor::Undo",               // vim default: line up
@@ -55,6 +56,8 @@
   {
     "context": "Editor && vim_mode == visual",
     "bindings": {
+      "ctrl-d": "vim::SelectNext",
+      "ctrl-u": "vim::SelectPrevious",
       "<": ["workspace::SendKeystrokes", "g < g v"],
       ">": ["workspace::SendKeystrokes", "g > g v"],
       "g <": "vim::Outdent",
