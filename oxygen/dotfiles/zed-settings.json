@@ -1,5 +1,10 @@
 {
   // changed via ui
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    }
+  },
   "auto_signature_help": true,
   // telemetry
   "telemetry": {

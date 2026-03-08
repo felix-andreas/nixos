@@ -64,7 +64,6 @@ run "git commit failed" git commit -m "backup: $(date +%Y-%m-%d)"
 run "git push failed" git push
 
 # If we got here, everything worked
-summary=$(git diff --stat HEAD~1)
 title="Pushed backup for $REPO_NAME"
-body="$summary"
+body=$(git diff --shortstat HEAD~1)
 urgency="normal"

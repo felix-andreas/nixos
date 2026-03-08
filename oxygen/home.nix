@@ -13,12 +13,14 @@ let
   };
 in
 {
-  # does not work on wayland until NixOS 22.11 (see below in bashrcExtra)
+  # does not work on wayland (see below in bashrcExtra)
   # https://github.com/NixOS/nixpkgs/pull/185987
   # https://github.com/nix-community/home-manager/issues/1011
+  # https://github.com/nix-community/home-manager/issues/3417
   home.sessionPath = [
-    "${config.home.homeDirectory}/.cargo/bin"
+    "${config.home.homeDirectory}/.local/bin"
     "${config.home.homeDirectory}/.bun/bin"
+    "${config.home.homeDirectory}/.cargo/bin"
   ];
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -62,8 +64,6 @@ in
     "org/gnome/desktop/wm/preferences".audible-bell = false;
     "org/gnome/desktop/wm/preferences".resize-with-right-button = true;
     "org/gnome/mutter".overlay-key = "";
-    # https://bugs.chromium.org/p/chromium/issues/detail?id=1356014#c54
-    # "org/gnome/mutter".experimental-features = [ "scale-monitor-framebuffer" ];
     "org/gnome/shell/keybindings".toggle-overview = [ "<Super>space" ];
   };
 
@@ -82,11 +82,9 @@ in
         shopt -s autocd # auto change directories
         source ~/.bash_aliases
 
-        # workaround for home.sessionVariables (remove when updating to NixOS 22.11)
-        # https://github.com/NixOS/nixpkgs/pull/185987
-        # https://github.com/nix-community/home-manager/issues/1011
+        # workaround for home.sessionVariables (see top)
         export PNPM_HOME=${config.xdg.dataHome}/pnpm
-        export PATH="${config.home.homeDirectory}/.bun/bin:${config.home.homeDirectory}/.cargo/bin:$PATH"
+        export PATH="${config.home.homeDirectory}/.local/bin:${config.home.homeDirectory}/.bun/bin:${config.home.homeDirectory}/.cargo/bin:$PATH"
       '';
     };
     bat = {
@@ -97,12 +95,8 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
-    eza = {
-      enable = true;
-    };
-    fzf = {
-      enable = true;
-    };
+    eza.enable = true;
+    fzf.enable = true;
     git = {
       enable = true;
       settings = {
@@ -227,34 +221,6 @@ in
     vscode = {
       enable = true;
       package = pkgs.unstable.vscode;
-      # extensions = with pkgs.unstable.vscode-extensions; [
-      #   github.github-vscode-theme
-      #   ms-vsliveshare.vsliveshare
-      #   vadimcn.vscode-lldb
-      #   matklad.rust-analyzer
-      #   ms-vscode.cpptools
-      # ];
-    };
-    zellij = {
-      enable = true;
-      settings = {
-        copy_command = "wl-copy";
-        theme = "default";
-        themes.default = {
-          fg = 7;
-          bg = 23; # this is just for text selection
-          black = 0;
-          red = 1;
-          green = 2;
-          yellow = 3;
-          blue = 4;
-          magenta = 5;
-          cyan = 6;
-          white = 7;
-          orange = 208;
-          gray = 247;
-        };
-      };
     };
     zoxide.enable = true;
   };
@@ -279,7 +245,8 @@ in
     xclip # access clipboard from console on X
     unstable.helix
     unstable.opencode
-    unstable.zed-editor.fhs
+    unstable.codex
+    unstable.zed-editor
     # cli tools
     ast-grep
     brotli
