@@ -74,7 +74,7 @@
   "github.copilot.chat.testGeneration.instructions": [
     {
       "text": "Don't add comments that only explain the code below. Use comments only to clarify intent or document non-obvious behavior."
-    },
+    }
   ],
   "github.copilot.nextEditSuggestions.enabled": false,
   /* SSH */
@@ -82,7 +82,7 @@
   /* HTML */
   "emmet.triggerExpansionOnTab": true,
   /* Python */
-  "python.languageServer": "None", /* Use Pyright extension! */
+  "python.languageServer": "None" /* Use Pyright extension! */,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
@@ -107,10 +107,7 @@
   // "rust-analyzer.check.features": "all",
   "rust-analyzer.check.allTargets": true,
   "rust-analyzer.procMacro.ignored": {
-    "leptos_macro": [
-      "server",
-      "component"
-    ],
+    "leptos_macro": ["server", "component"]
   },
   /* Nix */
   "nix.enableLanguageServer": true,
@@ -142,7 +139,7 @@
     "<C-d>": false,
     "<C-i>": true,
     "<C-o>": true,
-    "<C-g>": true, // inline chat
+    "<C-g>": true // inline chat
   },
   "vim.hlsearch": true,
   "vim.camelCaseMotion.enable": true,
@@ -153,96 +150,49 @@
   "vim.easymotionMarkerBackgroundColor": "#FFDF5D",
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<C-g>"
-      ],
-      "commands": [
-        "inlineChat.start"
-      ]
-    },
+      "before": ["<C-g>"],
+      "commands": ["inlineChat.start"]
+    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        " "
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "w"
-      ]
+      "before": [" "],
+      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
     },
     {
-      "before": [
-        "<leader>",
-        "v"
-      ],
-      "after": [
-        "ctrl+v"
-      ]
+      "before": ["<leader>", "v"],
+      "after": ["ctrl+v"]
     },
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
     },
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
     },
     {
-      "before": [
-        "<leader>",
-        " "
-      ],
-      "commands": [
-        ":nohl"
-      ]
+      "before": ["<leader>", " "],
+      "commands": [":nohl"]
     },
     {
-      "before": [
-        "<C-g>"
-      ],
-      "commands": [
-        "inlineChat.start"
-      ]
-    },
+      "before": ["<C-g>"],
+      "commands": ["inlineChat.start"]
+    }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
     },
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
     },
     {
-      "before": [
-        "<C-g>"
-      ],
-      "commands": [
-        "inlineChat.start"
-      ]
-    },
+      "before": ["<C-g>"],
+      "commands": ["inlineChat.start"]
+    }
   ],
   /* Other */
   "httpyac.responseViewContent": "full",
@@ -262,12 +212,16 @@
   "r.lsp.enabled": false,
   "r.lsp.promptToInstall": false,
   "roughly.path": "/home/felix/Projects/roughly/target/debug/roughly",
+  // "roughly.path": "/home/felix/Projects/inlay-hints/target/debug/roughly",
   // "roughly.args": ["--experimental-features", "all", "server"],
   "roughly.experimentalFeatures": [
+    "debug",
     "goto_definition",
     "goto_references",
     "range_formatting",
     "rename",
+    "typing",
+    "hovering"
   ],
   "output.smartScroll.enabled": false,
   "window.zoomLevel": -2,
@@ -277,10 +231,13 @@
   // "files.exclude": {
   //   "**/.git": false
   // },
-  "tailwindCSS.experimental.classRegex": ["class: \"(.*)\"", "Attrs.class \"(.*)\""],
+  "tailwindCSS.experimental.classRegex": [
+    "class: \"(.*)\"",
+    "Attrs.class \"(.*)\""
+  ],
   "tailwindCSS.includeLanguages": {
-      "rust": "html",
-      "elm": "html"
+    "rust": "html",
+    "elm": "html"
   },
   "chat.tools.terminal.autoApprove": {
     "/^npm run dev 2>&1 \\| head -20 &$/": {
@@ -291,4 +248,5 @@
     "bunx": true
   },
   "terminal.integrated.stickyScroll.enabled": false,
+  "r.lsp.diagnostics": false
 }

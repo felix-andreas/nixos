@@ -21,6 +21,7 @@ in
     "${config.home.homeDirectory}/.local/bin"
     "${config.home.homeDirectory}/.bun/bin"
     "${config.home.homeDirectory}/.cargo/bin"
+    "${config.home.homeDirectory}/.vite-plus/bin"
   ];
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -84,7 +85,7 @@ in
 
         # workaround for home.sessionVariables (see top)
         export PNPM_HOME=${config.xdg.dataHome}/pnpm
-        export PATH="${config.home.homeDirectory}/.local/bin:${config.home.homeDirectory}/.bun/bin:${config.home.homeDirectory}/.cargo/bin:$PATH"
+        export PATH="${config.home.homeDirectory}/.local/bin:${config.home.homeDirectory}/.bun/bin:${config.home.homeDirectory}/.cargo/bin:${config.home.homeDirectory}/.vite-plus/bin:$PATH"
       '';
     };
     bat = {
@@ -232,20 +233,17 @@ in
     inter
     nerd-fonts.jetbrains-mono
     # desktop
-    unstable.anytype
     easyeffects
     firefox
     unstable.ghostty
     unstable.gimp3
     google-chrome
-    spotify
     vlc
     libnotify # send desktop notifcations via cli
     wl-clipboard # access clipboard from console on Wayland
     xclip # access clipboard from console on X
     unstable.helix
     unstable.opencode
-    unstable.codex
     unstable.zed-editor
     # cli tools
     ast-grep
@@ -256,18 +254,20 @@ in
     pandoc
     qemu
     zellij
-    # android
-    scrcpy
+    # coding agents
+    unstable.amp-cli
+    unstable.codex
+    unstable.copilot-cli
+    unstable.gemini-cli
+    unstable.pi-coding-agent
     # git
     git
     git-lfs
     gh
     # containers
-    buildah
     cntr
     distrobox
     dive
-    podman-compose
     skopeo
     # kubernetes
     k9s

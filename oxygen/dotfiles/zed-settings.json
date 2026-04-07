@@ -1,7 +1,13 @@
 {
   // changed via ui
   "agent_servers": {
-    "opencode": {
+    "codex-acp": {
+      "type": "registry"
+    },
+    "gemini": {
+      "type": "registry"
+    },
+    "claude-acp": {
       "type": "registry"
     }
   },
@@ -9,10 +15,10 @@
   // telemetry
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   // base
-  "ui_font_size": 16,
+  "ui_font_size": 12,
   "buffer_font_size": 12,
   "buffer_line_height": "standard",
   "show_wrap_guides": true,
@@ -21,7 +27,12 @@
   "ui_font_family": "Inter Variable",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "search": {
-    "center_on_match": true,
+    "center_on_match": true
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
   },
   "soft_wrap": "editor_width",
   "icon_theme": "JetBrains New UI Icons (Light)",
@@ -39,12 +50,12 @@
   // vim
   "vim_mode": true,
   "vim": {
-    "use_system_clipboard": "never",
+    "use_system_clipboard": "never"
   },
   // languages
   "languages": {
     "R": {
-      "language_servers": ["roughly"],
+      "language_servers": ["roughly"]
     },
     "Python": {
       "tab_size": 4,
@@ -54,46 +65,37 @@
           "command": "bash",
           "arguments": [
             "-c",
-            "ruff check --exit-zero --fix --unsafe-fixes --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}",
-          ],
-        },
-      },
-    },
+            "ruff check --exit-zero --fix --unsafe-fixes --stdin-filename {buffer_path} | ruff format --stdin-filename {buffer_path}"
+          ]
+        }
+      }
+    }
   },
   "lsp": {
     "roughly": {
       "binary": {
         "path": "/home/felix/Projects/roughly/target/debug/roughly",
-        "arguments": ["server", "--stdio"],
-      },
-    },
+        "arguments": [
+          "server",
+          "--stdio",
+          "--experimental-features",
+          "typing hovering"
+        ]
+      }
+    }
   },
   // ai
   "agent": {
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "claude-opus-4.6",
-      "enable_thinking": false,
-    },
-    "default_profile": "write",
-    "tool_permissions": {
-      "tools": {
-        "save_file": {
-          "default": "allow",
-        },
-        "terminal": {
-          "default": "allow",
-        },
-      },
-      "default": "allow",
-    },
-    "dock": "right",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-opus-4.6",
+      "model": "gpt-5.3-codex",
+      "enable_thinking": false,
+      "effort": "high"
     },
+    "favorite_models": [],
+    "model_parameters": []
   },
   "edit_predictions": {
-    "mode": "subtle",
-  },
+    "mode": "subtle"
+  }
 }

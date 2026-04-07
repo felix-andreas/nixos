@@ -18,13 +18,9 @@
   },
   // vim ctrl keys
   {
-    "bindings": {
-      "ctrl-w": "workspace::CloseActiveDock",
-    },
-  },
-  {
     "context": "Editor",
     "bindings": {
+      "ctrl-w": "pane::CloseActiveItem",
       "ctrl-k ctrl-m": "workspace::ToggleZoom",
       "ctrl-s": "workspace::Save", // vim default: show signature
     },
